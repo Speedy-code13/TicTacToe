@@ -1,20 +1,25 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, FlatList } from 'react-native';
+import Board from './components/Board.js'
+import GameState from './utilities/GameState.js';
 
 export default function App() {
+  const onGameStateUpdate = (gameState) => {
+      
+  }
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <SafeAreaView style={styles.container}>
+      <Board onGameStateUpdate={onGameStateUpdate}/>
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: 'black'
   },
 });
