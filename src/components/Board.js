@@ -1,8 +1,8 @@
 import React, {useState, useRef} from 'react'
 import {StyleSheet, View} from 'react-native'
 import Box from './Box.js'
-import getGameState from '../utilities/getGameState.js'
-import GameState from '../utilities/GameState.js'
+import getGameState from '../getGameState.js'
+import GameState from '../GameState.js'
 
 const Board = ({onGameStateUpdate}) => {
     const {container, rowLayout} = styles

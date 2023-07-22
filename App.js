@@ -1,11 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView, StyleSheet, Text, FlatList } from 'react-native';
-import Board from './components/Board.js'
-import GameState from './utilities/GameState.js';
+import Board from './src/utilities/components/Board.js'
+import GameState from './src/utilities/GameState.js';
 
 export default function App() {
   const onGameStateUpdate = (gameState) => {
-      
+
   }
   return (
     <SafeAreaView style={styles.container}>
