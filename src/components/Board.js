@@ -1,10 +1,10 @@
 import React, {useState, useRef} from 'react'
 import {StyleSheet, View} from 'react-native'
 import Box from './Box.js'
-import getGameState from '../getGameState.js'
-import GameState from '../GameState.js'
+import getGameState from '../utilities/getGameState.js'
+import GameState from '../utilities/GameState.js'
 
-const Board = ({onGameStateUpdate}) => {
+const Board = ({onRoundOver}) => {
     const {container, rowLayout} = styles
     const logicalBoard = new Array(9).fill("", 0, 9)
     let xTurn = true
@@ -20,7 +20,7 @@ const Board = ({onGameStateUpdate}) => {
         const gameState = getGameState(logicalBoard, modifiedBoxState)
 
         if(gameState !== GameState.Ongoing)
-            onGameStateUpdate(gameState)
+            onRoundOver(gameState)
 
         return logicalBoard[i]
     }
