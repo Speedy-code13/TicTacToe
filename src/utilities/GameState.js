@@ -1,7 +1,7 @@
 const GameState = {
     Ongoing: 'Ongoing',
-    WonX: 'WonX',
-    WonO: 'WonO',
+    WonX: 'X won',
+    WonO: 'O won',
     Draw: 'Draw'
 }
 
