@@ -10,7 +10,7 @@ const Box = (props) => {
     const {box, textStyle} = styles
 
     return(
-        <Pressable style={[box, borderStyles]} onPress={() => { setState(onBoxUpdate(index)) } }>
+        <Pressable android_disableSound={true} style={[box, borderStyles]} onPress={() => { setState(onBoxUpdate(index)) } }>
             <Text style={textStyle}>{state}</Text>
         </Pressable>
     )

@@ -1,18 +1,49 @@
-import React, {useState, useRef} from 'react'
+import React, {useEffect, useRef} from 'react'
 import {StyleSheet, View} from 'react-native'
 import Box from './Box.js'
 import getGameState from '../utilities/getGameState.js'
 import GameState from '../utilities/GameState.js'
+import { Audio } from 'expo-av';
 
 const Board = ({onRoundOver}) => {
     const {container, rowLayout} = styles
     const logicalBoard = new Array(9).fill("", 0, 9)
-    let xTurn = true
     const borderSize = 4
+    const drawSound = useRef(new Audio.Sound());
+    let xTurn = true
+
+    //Constructor
+    useEffect(() => {
+         return cleanup
+    }, [])
+
+    const cleanup = () =>{
+        (async() => {
+            try{
+                await drawSound.current.unloadAsync()
+            } catch(e){
+                console.log(e)
+            }
+        })
+    }
+    
+    const playSound = async() => {
+        try{
+            await drawSound.current.unloadAsync()
+            await drawSound.current.loadAsync(require("../../assets/sounds/TICTACTOE_DRAW.mp3"))
+
+            await drawSound.current.playAsync()
+        } catch(e){
+            console.log(e)
+        }
+
+        
+    }
 
     const onBoxUpdate = (i) => {
         if(logicalBoard[i] !== "") return logicalBoard[i] 
 
+        playSound()
         const modifiedBoxState =  xTurn ? "X" : "O"
         logicalBoard[i] = modifiedBoxState
         xTurn = !xTurn
